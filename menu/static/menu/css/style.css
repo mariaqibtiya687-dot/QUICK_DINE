@@ -1,0 +1,1827 @@
+/* ==================================================
+   QUICK DINE - RESTAURANT WEBSITE
+   ================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #faf8f4;
+    color: #222;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ==================================================
+   NAVIGATION
+   ================================================== */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    z-index: 10;
+
+    color: white;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    margin-right: 5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: #f5a623;
+}
+
+.nav-button {
+    background: #f5a623;
+    color: #111;
+
+    padding: 11px 22px;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: white;
+}
+
+
+/* ==================================================
+   HERO
+   ================================================== */
+
+.hero {
+    min-height: 760px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            #63432b,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            #472b1c,
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #111,
+            #292016,
+            #0c0c0c
+        );
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.75)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    padding: 30px;
+}
+
+.hero-small {
+    color: #f5a623;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(55px, 8vw, 95px);
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #f5a623;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: #ddd;
+
+    font-size: 18px;
+}
+
+.name-entry {
+    max-width: 530px;
+    margin: 0 auto 28px;
+    text-align: left;
+    color: #fff;
+}
+
+.name-entry label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.name-entry div {
+    display: flex;
+    gap: 10px;
+}
+
+.name-entry input {
+    min-width: 0;
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: 4px;
+    padding: 13px 14px;
+    background: rgba(255, 255, 255, .96);
+    color: #222;
+    font: inherit;
+}
+
+.name-entry button {
+    border: 0;
+    border-radius: 4px;
+    padding: 13px 17px;
+    background: #f5a623;
+    color: #17120d;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form-error {
+    margin: 7px 0 0;
+    color: #ffd0d0;
+    font-size: 13px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.primary-button {
+    display: inline-block;
+
+    background: #f5a623;
+    color: #111;
+
+    padding: 14px 30px;
+
+    border-radius: 4px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    background: white;
+
+    transform: translateY(-3px);
+}
+
+.secondary-button {
+    display: inline-block;
+
+    border: 1px solid white;
+
+    color: white;
+
+    padding: 13px 30px;
+
+    border-radius: 4px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.secondary-button:hover {
+    background: white;
+    color: #111;
+}
+
+.scroll-down {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 30px;
+
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 8px);
+    }
+}
+
+
+/* ==================================================
+   INTRO / STORY
+   ================================================== */
+
+.intro {
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 110px 30px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.intro-image {
+    min-height: 450px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-box {
+    width: 80%;
+    height: 390px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 150px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2c2017,
+            #9a5a22
+        );
+
+    box-shadow:
+        25px 25px 0 #f5a623;
+}
+
+.section-label {
+    color: #b7791f;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+}
+
+.intro-content h2,
+.section-heading h2,
+.why-content h2,
+.cta h2 {
+    font-family: Georgia, serif;
+
+    font-size: 50px;
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.intro-content h2 span,
+.section-heading h2 span,
+.why-content h2 span,
+.cta h2 span {
+    color: #b7791f;
+}
+
+.intro-content > p {
+    color: #666;
+
+    margin-bottom: 18px;
+
+    max-width: 520px;
+}
+
+.story-points {
+    display: flex;
+
+    gap: 25px;
+
+    margin: 30px 0;
+}
+
+.story-points div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.story-points strong {
+    color: #b7791f;
+
+    font-size: 20px;
+}
+
+.story-points span {
+    font-size: 13px;
+
+    color: #555;
+}
+
+.text-button {
+    color: #9b651c;
+
+    font-weight: bold;
+
+    border-bottom: 1px solid #9b651c;
+
+    padding-bottom: 4px;
+}
+
+
+/* ==================================================
+   FEATURE STRIP
+   ================================================== */
+
+.feature-strip {
+    background: #191714;
+
+    color: white;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    padding: 35px 8%;
+}
+
+.strip-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    border-right: 1px solid #444;
+}
+
+.strip-item:last-child {
+    border: none;
+}
+
+.strip-item > span {
+    font-size: 30px;
+}
+
+.strip-item h3 {
+    color: #f5a623;
+
+    font-size: 16px;
+}
+
+.strip-item p {
+    color: #aaa;
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   DISHES
+   ================================================== */
+
+.dishes {
+    padding: 110px 7%;
+
+    text-align: center;
+
+    background: #faf8f4;
+}
+
+.section-heading {
+    max-width: 650px;
+
+    margin: 0 auto 55px;
+}
+
+.section-heading > p:last-child {
+    color: #777;
+}
+
+.dish-grid {
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 22px;
+}
+
+.dish-card {
+    background: white;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    text-align: left;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+.dish-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.dish-image {
+    height: 210px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 90px;
+}
+
+.dish-one {
+    background: #e9c7a3;
+}
+
+.dish-two {
+    background: #ded5ae;
+}
+
+.dish-three {
+    background: #e5b895;
+}
+
+.dish-four {
+    background: #c9a18b;
+}
+
+.dish-info {
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.dish-info h3 {
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+.dish-info p {
+    color: #777;
+
+    font-size: 12px;
+}
+
+.dish-info strong {
+    color: #b7791f;
+
+    white-space: nowrap;
+}
+
+.menu-button {
+    margin-top: 45px;
+}
+
+
+/* ==================================================
+   WHY SECTION
+   ================================================== */
+
+.why-section {
+    background: #1b1815;
+
+    color: white;
+
+    padding: 100px 8%;
+
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.why-content h2 {
+    font-size: 55px;
+}
+
+.why-content > p:last-child {
+    color: #aaa;
+
+    max-width: 450px;
+}
+
+.why-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.why-card {
+    border: 1px solid #403b35;
+
+    padding: 30px;
+
+    transition: 0.3s;
+}
+
+.why-card:hover {
+    border-color: #f5a623;
+
+    transform: translateY(-5px);
+}
+
+.why-card > span {
+    color: #f5a623;
+
+    font-size: 13px;
+}
+
+.why-card h3 {
+    font-family: Georgia, serif;
+
+    font-size: 23px;
+
+    margin: 10px 0;
+}
+
+.why-card p {
+    color: #999;
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   CTA
+   ================================================== */
+
+.cta {
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            rgba(20, 15, 10, 0.9),
+            rgba(20, 15, 10, 0.9)
+        ),
+        radial-gradient(
+            circle,
+            #8a531e,
+            #17130f
+        );
+}
+
+.cta-content {
+    max-width: 650px;
+}
+
+.cta h2 {
+    color: white;
+
+    font-size: 58px;
+}
+
+.cta p:not(.section-label) {
+    color: #bbb;
+
+    margin-bottom: 30px;
+}
+
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+
+footer {
+    background: #111;
+
+    color: white;
+
+    padding: 65px 8% 20px;
+}
+
+.footer-main {
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1.5fr;
+
+    gap: 60px;
+
+    padding-bottom: 50px;
+}
+
+.footer-brand h2 {
+    font-family: Georgia, serif;
+
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    color: #888;
+
+    font-size: 14px;
+}
+
+.footer-column {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.footer-column h3 {
+    color: #f5a623;
+
+    margin-bottom: 10px;
+}
+
+.footer-column a,
+.footer-column p {
+    color: #888;
+
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+
+    padding-top: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   RESPONSIVE DESIGN
+   ================================================== */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .feature-strip {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .strip-item {
+        padding: 20px;
+
+        border-bottom: 1px solid #444;
+    }
+
+    .dish-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .why-section {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: 70px;
+
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .intro {
+        padding: 70px 20px;
+    }
+
+    .intro-content h2,
+    .section-heading h2 {
+        font-size: 40px;
+    }
+
+    .image-box {
+        width: 85%;
+        height: 300px;
+    }
+
+    .feature-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .strip-item {
+        border-right: none;
+    }
+
+    .dish-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-section {
+        padding: 70px 20px;
+    }
+
+    .why-content h2 {
+        font-size: 45px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta h2 {
+        font-size: 45px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
+/* MENU PAGE */
+
+.menu-header{
+padding:120px 20px 40px;
+text-align:center;
+background:#111;
+color:white;
+}
+
+.menu-header h1{
+font-size:50px;
+margin-bottom:10px;
+}
+
+.menu-header p{
+color:#ddd;
+}
+
+.categories{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+padding:35px;
+background:#faf8f4;
+}
+
+.categories button{
+
+padding:12px 25px;
+
+border:none;
+
+background:white;
+
+cursor:pointer;
+
+font-size:16px;
+
+border-radius:30px;
+
+box-shadow:0 4px 12px rgba(0,0,0,.1);
+
+transition:.3s;
+
+}
+
+.categories button:hover,
+.categories .active{
+
+background:#f5a623;
+
+color:white;
+
+}
+
+.menu-grid{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:60px 20px;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+}
+
+.food-card{
+
+background:white;
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.food-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+}
+
+.food-image{
+
+height:220px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:90px;
+
+background:linear-gradient(135deg,#ffe3b5,#ffd59a);
+
+}
+
+.food-content{
+
+padding:25px;
+
+}
+
+.food-content h2{
+
+margin-bottom:10px;
+
+font-size:24px;
+
+}
+
+.price{
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#f5a623;
+
+margin-bottom:10px;
+
+}
+
+.rating{
+
+margin-bottom:12px;
+
+}
+
+.description{
+
+color:#666;
+
+margin-bottom:25px;
+
+}
+
+/* Add to Cart Button */
+
+.add-cart{
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #ffb6c1;      /* Baby Pink */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+}
+
+.add-cart:hover{
+    background: #ff8fab;      /* Darker Baby Pink */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 143, 171, 0.5);
+}
+/* =========================================================
+   QUICK DINE — NEW PASTEL VISUAL THEME
+   ========================================================= */
+
+:root {
+    --cream: #fffaf7;
+    --white: #ffffff;
+    --brown: #3b2b2b;
+    --brown-light: #604b48;
+
+    --pink: #f6c5d7;
+    --pink-light: #fdebf2;
+
+    --blue: #cfe8f5;
+    --blue-light: #edf7fb;
+
+    --lavender: #ddd5f0;
+    --lavender-light: #f5f1fb;
+
+    --peach: #f7d0bd;
+    --peach-light: #fff0e8;
+
+    --green: #cfe5d5;
+    --green-light: #eef8f0;
+
+    --yellow: #f7e4a7;
+    --yellow-light: #fff9df;
+
+    --text: #342b2a;
+    --muted: #756b68;
+}
+
+
+/* ---------- PAGE ---------- */
+
+body {
+    background: var(--cream);
+    color: var(--text);
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    background: rgba(59, 43, 43, 0.96);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    color: #fffaf7;
+}
+
+.nav-links a {
+    color: #fffaf7;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: var(--pink);
+}
+
+.nav-button {
+    background: var(--pink);
+    color: var(--brown);
+    border-radius: 25px;
+}
+
+.nav-button:hover {
+    background: var(--blue);
+}
+
+
+/* =========================================================
+   HERO — LIGHT PASTEL
+   ========================================================= */
+
+.hero {
+    min-height: 720px;
+
+    background:
+        radial-gradient(
+            circle at 12% 20%,
+            rgba(246, 197, 215, 0.75),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 88% 25%,
+            rgba(207, 232, 245, 0.8),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 75% 90%,
+            rgba(221, 213, 240, 0.7),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaf7,
+            #f9f1ed,
+            #eef7fa
+        );
+}
+
+.hero-overlay {
+    background: transparent;
+}
+
+.hero-small {
+    color: #8f6d68;
+}
+
+.hero h1 {
+    color: var(--brown);
+}
+
+.hero h1 span {
+    color: #c78391;
+}
+
+.hero-description {
+    color: var(--muted);
+}
+
+
+/* ---------- NAME ENTRY ---------- */
+
+.name-entry {
+    color: var(--brown);
+}
+
+.name-entry input {
+    border: 2px solid #ead9d5;
+    background: white;
+    color: var(--text);
+    border-radius: 12px;
+}
+
+.name-entry input:focus {
+    outline: none;
+    border-color: var(--pink);
+    box-shadow: 0 0 0 4px var(--pink-light);
+}
+
+.name-entry button {
+    background: var(--peach);
+    color: var(--brown);
+    border-radius: 25px;
+}
+
+.name-entry button:hover {
+    background: var(--pink);
+}
+
+
+/* ---------- HERO BUTTONS ---------- */
+
+.primary-button {
+    background: var(--pink);
+    color: var(--brown);
+    border-radius: 25px;
+}
+
+.primary-button:hover {
+    background: var(--peach);
+    color: var(--brown);
+}
+
+.secondary-button {
+    border: 1px solid #9c8580;
+    color: var(--brown);
+    border-radius: 25px;
+}
+
+.secondary-button:hover {
+    background: var(--brown);
+    color: white;
+}
+
+.scroll-down {
+    color: var(--brown);
+}
+
+
+/* =========================================================
+   STORY SECTION
+   ========================================================= */
+
+.intro {
+    background: var(--cream);
+}
+
+.image-box {
+    background:
+        linear-gradient(
+            135deg,
+            var(--lavender),
+            var(--blue)
+        );
+
+    box-shadow: 20px 20px 0 var(--pink);
+    border-radius: 18px;
+}
+
+.section-label {
+    color: #a47b72;
+}
+
+.intro-content h2 span,
+.section-heading h2 span,
+.why-content h2 span,
+.cta h2 span {
+    color: #c18491;
+}
+
+.intro-content > p {
+    color: var(--muted);
+}
+
+.story-points strong {
+    color: #b47b86;
+}
+
+.text-button {
+    color: #9b6e68;
+}
+
+
+/* =========================================================
+   FEATURE STRIP — DARK CONTRAST
+   ========================================================= */
+
+.feature-strip {
+    background: var(--brown);
+}
+
+.strip-item {
+    border-color: rgba(255,255,255,.14);
+}
+
+.strip-item h3 {
+    color: var(--pink);
+}
+
+.strip-item p {
+    color: #e5d9d5;
+}
+
+
+/* =========================================================
+   DISH SECTION
+   ========================================================= */
+
+.dishes {
+    background: var(--blue-light);
+}
+
+.dish-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 28px rgba(59,43,43,.08);
+}
+
+.dish-card:hover {
+    box-shadow: 0 16px 35px rgba(59,43,43,.13);
+}
+
+.dish-one {
+    background: var(--pink-light);
+}
+
+.dish-two {
+    background: var(--lavender-light);
+}
+
+.dish-three {
+    background: var(--peach-light);
+}
+
+.dish-four {
+    background: var(--green-light);
+}
+
+.dish-info strong {
+    color: #a87462;
+}
+
+
+/* =========================================================
+   WHY QUICK DINE
+   ========================================================= */
+
+.why-section {
+    background:
+        linear-gradient(
+            135deg,
+            #403131,
+            #594541
+        );
+}
+
+.why-card {
+    border-color: rgba(255,255,255,.20);
+    border-radius: 18px;
+}
+
+.why-card:hover {
+    border-color: var(--pink);
+}
+
+.why-card > span {
+    color: var(--yellow);
+}
+
+.why-card p {
+    color: #e2d6d2;
+}
+
+
+/* =========================================================
+   CTA — SOFT PASTEL
+   ========================================================= */
+
+.cta {
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            var(--pink),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            var(--lavender),
+            transparent 25%
+        ),
+        var(--cream);
+}
+
+.cta h2 {
+    color: var(--brown);
+}
+
+.cta p:not(.section-label) {
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    background: var(--brown);
+}
+
+.footer-column h3 {
+    color: var(--pink);
+}
+
+.footer-brand p,
+.footer-column a,
+.footer-column p {
+    color: #d8cbc7;
+}
+
+.footer-column a:hover {
+    color: var(--yellow);
+}
+
+
+/* =========================================================
+   MENU PAGE
+   ========================================================= */
+
+.menu-header {
+    background:
+        linear-gradient(
+            135deg,
+            var(--brown),
+            var(--brown-light)
+        );
+}
+
+.menu-header h1 {
+    color: #fffaf7;
+}
+
+.menu-header p {
+    color: #eaded9;
+}
+
+.categories {
+    background: var(--cream);
+}
+
+.categories button {
+    color: var(--brown);
+    border: 1px solid #eaded9;
+    box-shadow: 0 4px 14px rgba(59,43,43,.06);
+}
+
+/* pastel category buttons */
+
+.categories button:nth-child(1) {
+    background: var(--pink-light);
+}
+
+.categories button:nth-child(2) {
+    background: var(--blue-light);
+}
+
+.categories button:nth-child(3) {
+    background: var(--lavender-light);
+}
+
+.categories button:nth-child(4) {
+    background: var(--peach-light);
+}
+
+.categories button:nth-child(5) {
+    background: var(--green-light);
+}
+
+.categories button:hover,
+.categories .active {
+    background: var(--pink);
+    color: var(--brown);
+}
+
+
+/* =========================================================
+   FOOD CARDS
+   ========================================================= */
+
+.menu-grid {
+    background: var(--cream);
+}
+
+.food-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(59,43,43,.08);
+}
+
+.food-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 17px 35px rgba(59,43,43,.13);
+}
+
+.food-image {
+    background:
+        linear-gradient(
+            135deg,
+            var(--peach-light),
+            var(--yellow-light)
+        );
+}
+
+.food-content h2 {
+    color: var(--brown);
+}
+
+.price {
+    color: #a87462;
+}
+
+.description {
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   ADD TO CART
+   ========================================================= */
+
+.add-cart {
+    background: var(--pink);
+    color: var(--brown);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(246,197,215,.35);
+}
+
+.add-cart:hover {
+    background: var(--peach);
+    color: var(--brown);
+}
+
+
+/* =========================================================
+   GLOBAL POLISH
+   ========================================================= */
+
+button,
+a {
+    transition: all .25s ease;
+}
+/* ===== QUICK DINE NAVY INTERACTION THEME ===== */
+
+:root {
+    --qd-navy: #172B4D;
+    --qd-navy-dark: #0F1F38;
+    --qd-navy-light: #2D4770;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--qd-navy) !important;
+}
+
+/* Main dark sections */
+.feature-strip,
+.why-section,
+footer {
+    background: var(--qd-navy) !important;
+}
+
+/* Text accents */
+.nav-links a:hover,
+.nav-links .active {
+    color: #F6C5D7 !important;
+}
+
+/* Buttons */
+.nav-button {
+    background: #F6C5D7 !important;
+    color: var(--qd-navy) !important;
+}
+
+/* Strong borders */
+.categories button:hover,
+.categories button.active {
+    border: 2px solid var(--qd-navy) !important;
+}
+
+.food-card:hover,
+.dish-card:hover {
+    border: 2px solid var(--qd-navy);
+}
+
+/* Add to cart */
+.add-cart:hover {
+    background: #F7D0BD !important;
+    border: 2px solid var(--qd-navy) !important;
+}
+
+/* Inputs */
+.name-entry input:focus,
+input:focus,
+select:focus {
+    border: 2px solid var(--qd-navy) !important;
+    box-shadow: 0 0 0 3px rgba(23, 43, 77, 0.12) !important;
+}
+
+/* Main buttons */
+.primary-button:hover,
+.name-entry button:hover {
+    border: 2px solid var(--qd-navy) !important;
+}
+
+/* Selection */
+::selection {
+    background: #F6C5D7;
+    color: var(--qd-navy);
+}
+::selection {
+    background: var(--pink);
+    color: var(--brown);
+}
+/* ===== MENU FINAL NAVY STYLE ===== */
+
+.menu-header {
+    background: #172B4D !important;
+    border-bottom: 3px solid #0F1F38;
+}
+
+.menu-header h1 {
+    color: #FFFFFF !important;
+}
+
+.menu-header p {
+    color: #E8EEF7 !important;
+}
+
+/* Cart button */
+.menu-header a,
+.menu-header .cart-button {
+    background: #F6C5D7 !important;
+    color: #172B4D !important;
+    border: 2px solid #0F1F38 !important;
+}
+
+/* Category buttons */
+.categories button {
+    border: 2px solid #243B5A !important;
+    color: #172B4D !important;
+}
+
+.categories button:hover,
+.categories button.active {
+    border: 3px solid #0F1F38 !important;
+    color: #0F1F38 !important;
+    box-shadow: 0 5px 15px rgba(15,31,56,.18);
+}
+
+/* Food card */
+.food-card {
+    border: 2px solid transparent;
+}
+
+.food-card:hover {
+    border: 2px solid #172B4D !important;
+}
+
+/* Add to cart */
+.add-cart {
+    border: 2px solid transparent;
+}
+
+.add-cart:hover {
+    border: 2px solid #172B4D !important;
+}
+/* ===== QUICK DINE MENU - FINAL COLORS ===== */
+
+.menu-header {
+    background: #172B4D !important;
+    color: white !important;
+    border-bottom: 3px solid #0B1930 !important;
+}
+
+.menu-header h1 {
+    color: white !important;
+}
+
+.menu-header p {
+    color: #E8EEF7 !important;
+}
+
+/* Cart button */
+.menu-header a {
+    background: #F6C5D7 !important;
+    color: #172B4D !important;
+    border: 2px solid #0B1930 !important;
+}
+
+.menu-header a:hover {
+    background: #CFE8F5 !important;
+    border-color: #0B1930 !important;
+}
+
+/* Category buttons */
+.categories button {
+    border: 2px solid #243B5A !important;
+}
+
+.categories button:hover,
+.categories button.active {
+    border: 3px solid #0B1930 !important;
+}
+
+/* Food card */
+.food-card {
+    border: 2px solid transparent !important;
+}
+
+.food-card:hover {
+    border: 2px solid #172B4D !important;
+}
+
+/* Add to Cart */
+.add-cart {
+    border: 2px solid transparent !important;
+}
+
+.add-cart:hover {
+    border: 2px solid #172B4D !important;
+}
+/* =========================================
+   QUICK DINE — STRONG BLOOM EFFECT
+   ========================================= */
+
+.qd-bloom {
+    position: relative;
+    z-index: 10;
+    animation: qdBloom 0.75s ease-out;
+}
+
+@keyframes qdBloom {
+
+    0% {
+        box-shadow:
+            0 0 0 0 rgba(246, 197, 215, 0),
+            0 0 0 0 rgba(170, 210, 245, 0);
+    }
+
+    20% {
+        box-shadow:
+            0 0 18px 8px rgba(246, 197, 215, 0.95),
+            0 0 35px 12px rgba(170, 210, 245, 0.75);
+    }
+
+    45% {
+        box-shadow:
+            0 0 30px 14px rgba(246, 197, 215, 0.80),
+            0 0 65px 22px rgba(170, 210, 245, 0.60);
+    }
+
+    70% {
+        box-shadow:
+            0 0 42px 18px rgba(246, 197, 215, 0.50),
+            0 0 85px 30px rgba(170, 210, 245, 0.40);
+    }
+
+    100% {
+        box-shadow:
+            0 0 65px 28px rgba(246, 197, 215, 0),
+            0 0 110px 40px rgba(170, 210, 245, 0);
+    }
+}

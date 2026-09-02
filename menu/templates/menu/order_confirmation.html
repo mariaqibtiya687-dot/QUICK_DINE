@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Dine | Order Confirmed</title>
+    <style>
+        body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; font-family: Arial, sans-serif; background: #faf8f4; color: #2b2119; }
+        .confirmation { width: min(600px, 100%); padding: 42px; border-radius: 18px; background: #fff; text-align: center; box-shadow: 0 10px 32px rgba(54,35,19,.13); }
+        .tick { width: 68px; height: 68px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center; background: #dff4e5; color: #24783d; font-size: 36px; font-weight: 700; }
+        h1 { margin: 0 0 12px; font-family: Georgia, serif; font-size: 38px; }
+        p { color: #64574e; line-height: 1.6; }
+        .summary { margin: 28px 0; padding: 20px; border-radius: 10px; background: #fff7ec; text-align: left; }
+        .summary p { margin: 8px 0; }
+        .summary strong { color: #2b2119; }
+        a { display: inline-block; padding: 13px 22px; border-radius: 8px; background: #f5a623; color: #1d160f; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <main class="confirmation">
+        <div class="tick">✓</div>
+        <h1>Order Confirmed!</h1>
+        <p>Thank you, {{ order.customer_name }}. Your order has been sent to the kitchen and will be served at Table {{ order.table_number }} shortly.</p>
+        <section class="summary">
+            <p><strong>Order #{{ order.id }}</strong></p>
+            {% for item in order.items.all %}<p>{{ item.quantity }} × {{ item.item_name }} — ₹{{ item.line_total }}</p>{% endfor %}
+            <p><strong>Total: ₹{{ order.total_amount }}</strong></p>
+        </section>
+        <a href="{% url 'menu' %}">Order More Food</a>
+    </main>
+</body>
+</html>

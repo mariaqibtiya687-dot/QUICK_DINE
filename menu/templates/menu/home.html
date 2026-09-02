@@ -1,0 +1,545 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quick Dine | Digital Restaurant</title>
+
+    <link rel="stylesheet" href="{% static 'menu/css/style.css' %}">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="/" class="logo">
+            <span>🍽</span> QUICK DINE
+        </a>
+
+        <nav class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/menu/">Menu</a>
+            <a href="#about">About</a>
+            <a href="#features">Why Us</a>
+            <a href="/cart/">🛒 Cart</a>
+        </nav>
+
+        <a href="/menu/" class="nav-button">
+            Order Now
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <p class="hero-small">
+                WELCOME TO QUICK DINE
+            </p>
+
+            <h1>
+                Delicious Food.
+                <br>
+                <span>Simply Ordered.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover delicious dishes, explore our digital menu
+                and order your favourite food directly from your table.
+            </p>
+
+            <form class="name-entry" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <label for="{{ name_form.name.id_for_label }}">Start by entering your name</label>
+                <div>
+                    {{ name_form.name }}
+                    <button type="submit">Continue to Menu</button>
+                </div>
+                {% for error in name_form.name.errors %}<p class="form-error">{{ error }}</p>{% endfor %}
+            </form>
+
+            <div class="hero-buttons">
+
+                <a href="/menu/" class="primary-button">
+                    Explore Menu
+                </a>
+
+                <a href="#about" class="secondary-button">
+                    Our Story
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="scroll-down">
+            ↓
+        </div>
+
+    </section>
+
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="intro" id="about">
+
+        <div class="intro-image">
+
+            <div class="image-box">
+                🍛
+            </div>
+
+        </div>
+
+        <div class="intro-content">
+
+            <p class="section-label">
+                OUR STORY
+            </p>
+
+            <h2>
+                A Better Way
+                <br>
+                to <span>Dine</span>
+            </h2>
+
+            <p>
+                Quick Dine is a digital menu and ordering system
+                designed to make restaurant ordering faster,
+                easier and more convenient.
+            </p>
+
+            <p>
+                Simply scan the QR code, browse the menu,
+                select your favourite dishes and place your order.
+            </p>
+
+            <div class="story-points">
+
+                <div>
+                    <strong>01</strong>
+                    <span>Digital Menu</span>
+                </div>
+
+                <div>
+                    <strong>02</strong>
+                    <span>Easy Ordering</span>
+                </div>
+
+                <div>
+                    <strong>03</strong>
+                    <span>Fast Service</span>
+                </div>
+
+            </div>
+
+            <a href="/menu/" class="text-button">
+                Discover Our Menu →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURE STRIP ================= -->
+
+    <section class="feature-strip">
+
+        <div class="strip-item">
+            <span>📱</span>
+            <div>
+                <h3>Scan</h3>
+                <p>Scan the QR code</p>
+            </div>
+        </div>
+
+        <div class="strip-item">
+            <span>🍴</span>
+            <div>
+                <h3>Browse</h3>
+                <p>Explore our menu</p>
+            </div>
+        </div>
+
+        <div class="strip-item">
+            <span>🛒</span>
+            <div>
+                <h3>Select</h3>
+                <p>Add items to cart</p>
+            </div>
+        </div>
+
+        <div class="strip-item">
+            <span>✓</span>
+            <div>
+                <h3>Order</h3>
+                <p>Place your order</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================= POPULAR DISHES ================= -->
+
+    <section class="dishes" id="features">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                FROM OUR KITCHEN
+            </p>
+
+            <h2>
+                Popular <span>Dishes</span>
+            </h2>
+
+            <p>
+                A few favourites from our kitchen.
+                Discover more delicious choices on our menu.
+            </p>
+
+        </div>
+
+
+        <div class="dish-grid">
+
+            <div class="dish-card">
+
+                <div class="dish-image dish-one">
+                    🍗
+                </div>
+
+                <div class="dish-info">
+
+                    <div>
+                        <h3>Chicken Biryani</h3>
+                        <p>Fragrant basmati rice & tender chicken</p>
+                    </div>
+
+                    <strong>₹250</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dish-card">
+
+                <div class="dish-image dish-two">
+                    🧀
+                </div>
+
+                <div class="dish-info">
+
+                    <div>
+                        <h3>Paneer Tikka</h3>
+                        <p>Grilled paneer with aromatic spices</p>
+                    </div>
+
+                    <strong>₹180</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dish-card">
+
+                <div class="dish-image dish-three">
+                    🍤
+                </div>
+
+                <div class="dish-info">
+
+                    <div>
+                        <h3>Garlic Prawns</h3>
+                        <p>Juicy prawns with garlic & herbs</p>
+                    </div>
+
+                    <strong>₹280</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="dish-card">
+
+                <div class="dish-image dish-four">
+                    🍰
+                </div>
+
+                <div class="dish-info">
+
+                    <div>
+                        <h3>Chocolate Dessert</h3>
+                        <p>Rich chocolate dessert for a sweet finish</p>
+                    </div>
+
+                    <strong>₹150</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <a href="/menu/" class="primary-button menu-button">
+            View Full Menu
+        </a>
+
+    </section>
+
+
+    <!-- ================= WHY QUICK DINE ================= -->
+
+    <section class="why-section">
+
+        <div class="why-content">
+
+            <p class="section-label">
+                WHY QUICK DINE?
+            </p>
+
+            <h2>
+                Dining Made
+                <br>
+                <span>Simple.</span>
+            </h2>
+
+            <p>
+                No waiting for a menu. No unnecessary delays.
+                Everything you need is right on your phone.
+            </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <span>01</span>
+                <h3>Digital Menu</h3>
+                <p>
+                    Browse the restaurant menu directly
+                    from your smartphone.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <span>02</span>
+                <h3>Easy Ordering</h3>
+                <p>
+                    Select dishes and add them
+                    to your cart with ease.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <span>03</span>
+                <h3>Quick Service</h3>
+                <p>
+                    Send your order directly to
+                    the restaurant.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <span>04</span>
+                <h3>Simple Experience</h3>
+                <p>
+                    A clean and convenient way
+                    to enjoy your dining experience.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta">
+
+        <div class="cta-content">
+
+            <p class="section-label">
+                READY TO DINE?
+            </p>
+
+            <h2>
+                Your Table.
+                <br>
+                Your Menu.
+                <br>
+                <span>Your Choice.</span>
+            </h2>
+
+            <p>
+                Explore our menu and discover something delicious today.
+            </p>
+
+            <a href="/menu/" class="primary-button">
+                Start Ordering
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Restaurant Info -->
+        <div class="footer-box">
+
+            <h2>QAMAL DINE</h2>
+
+            <p>
+                Experience delicious food with our modern QR Code Ordering
+                System. Fresh ingredients, quick service and unforgettable
+                dining.
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Quick Links -->
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/menu/">Menu</a></li>
+
+                <li><a href="/cart/">Cart</a></li>
+
+                <li><a href="/order-confirmation/">Order</a></li>
+
+                <li><a href="#">About Us</a></li>
+
+                <li><a href="#">Contact</a></li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- Contact -->
+
+        <div class="footer-box">
+
+            <h3>Contact Us</h3>
+
+            <p><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka</p>
+
+            <p><i class="fas fa-phone"></i> +91 9876543210</p>
+
+            <p><i class="fas fa-envelope"></i> qamaldine@gmail.com</p>
+
+            <p><i class="fas fa-clock"></i> 10:00 AM - 11:00 PM</p>
+
+        </div>
+
+
+
+        <!-- Google Map -->
+
+        <div class="footer-box">
+
+            <h3>Find Us</h3>
+
+            <iframe
+            src="https://www.google.com/maps?q=Bangalore&output=embed"
+            loading="lazy">
+            </iframe>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+
+        © 2026 Qamal Dine | QR Code Based Digital Menu &
+        Ordering System
+
+    </div>
+
+</footer>
+<script>
+    const nameInput = document.getElementById("id_name");
+
+    if (nameInput) {
+        nameInput.addEventListener("input", function () {
+            // Voice will be triggered after the user enters their name.
+        });
+    }
+
+    function speakWelcome() {
+        const name = nameInput ? nameInput.value.trim() : "";
+
+        if (!name) {
+            alert("Please enter your name first.");
+            return;
+        }
+
+        const message =
+            "Hi " + name +
+            ", welcome to Quick Dine! What are you craving today?";
+
+        const speech = new SpeechSynthesisUtterance(message);
+
+        speech.rate = 0.9;
+        speech.pitch = 1;
+        speech.volume = 1;
+
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(speech);
+    }
+</script>
+<script src="{% static 'menu/js/bloom.js' %}"></script>
+</body>
+
+</html>
