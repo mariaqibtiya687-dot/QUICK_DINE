@@ -25,11 +25,7 @@ SECRET_KEY = 'django-insecure-7hw^7_y#0e)xm(0-05p%@42n8g63n@d#nb9iu^_n!yxlctp-v-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "sep-marrie-blessed-yeast.trycloudflare.com",
-]
+ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://sep-marrie-blessed-yeast.trycloudflare.com",
@@ -83,13 +79,9 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'qr_menu_db',
-        'USER': 'root',
-        'PASSWORD': '$@611lsat*982#',
-        'HOST': 'localhost',
-        'PORT': '3306',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
