@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://sep-marrie-blessed-yeast.trycloudflare.com",
+    "https://quick-dine-ggvu.onrender.com",
 ]
 
 
